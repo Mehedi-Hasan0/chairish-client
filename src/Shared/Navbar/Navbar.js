@@ -11,7 +11,7 @@ const Navbar = () => {
 
     return (
         <nav className=' bg-primary py-2 text-white'>
-            <div className=' md:flex hidden justify-around items-center max-w-7xl mx-auto'>
+            <div className=' lg:flex hidden justify-between items-center max-w-6xl lg:mx-16 xl:mx-auto'>
                 <Link className='text-3xl font-semibold' to='/'>Chairish</Link>
                 <div className='nav_link'>
                     <Link className='text-sm nav-link nav-link-ltr' to='/'>Home</Link>
@@ -27,13 +27,13 @@ const Navbar = () => {
                 </div>
             </div>
 
-            <div className='md:hidden flex items-center justify-between py-3 px-6'>
-                <Link className='text-xl font-semibold' to='/'>Chairish</Link>
+            <div className='lg:hidden flex items-center justify-between py-3 px-5 sm:px-9 md:px-12'>
+                <Link className='text-2xl font-semibold' to='/'>Chairish</Link>
                 <img src={toggle ? close : menu} alt='menu' className='w-6 object-contain cursor-pointer opacity-70' onClick={() => setToggle((previous) => !previous)} />
 
-                <div className={`${toggle ? 'flex' : 'hidden'} p-6 bg-primary absolute top-14 right-0 w-full h-full flex-col`}>
+                <div className={`${toggle ? 'flex' : 'hidden'} p-6 bg-primary absolute top-14 right-0 w-full h-full flex-col opacity-100`}>
                     {/* <img src={toggle ? close : menu} alt='menu' className='w-6 object-contain mb-7 cursor-pointer' onClick={() => setToggle((previous) => !previous)} /> */}
-                    <div className='flex flex-col md:text-lg text-base text-white z-40 bg-primary w-full relative text-center justify-between h-36'>
+                    <div className='flex flex-col md:text-lg text-base text-white z-50 bg-primary w-full relative text-center justify-between h-36'>
 
                         <Link className='text-base nav-link-mobile' to='/'>Home</Link>
                         <Link className='text-base nav-link-mobile' to='/shop'>Shop</Link>
