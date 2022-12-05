@@ -4,7 +4,7 @@ import sofa from '../../assets/images/sofa.png';
 
 const Footer = () => {
     return (
-        <div className=' bg-white'>
+        <div className=' bg-white border-t'>
             <div className=' flex md:flex-row flex-col-reverse justify-between max-w-6xl mx-auto px-5 sm:px-9 md:px-12 lg:px-16 xl:px-0'>
                 <div className='md:w-[60%] w-full my-20'>
                     <div className='flex'>

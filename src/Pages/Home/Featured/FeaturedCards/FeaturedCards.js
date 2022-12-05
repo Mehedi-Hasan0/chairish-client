@@ -1,8 +1,7 @@
 import React from 'react';
 
 const FeaturedCards = ({ item }) => {
-    const { name, price, description, img, how_it_fits, ratings, product_details, quality_care, _id } = item;
-    console.log(item);
+    const { name, price, img, product_details } = item;
     return (
         <div className='border rounded-3xl shadow-md flex justify-between flex-col'>
             <div className=' bg-[#dce5e4] rounded-t-3xl'>
