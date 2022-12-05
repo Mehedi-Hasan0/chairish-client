@@ -10,14 +10,13 @@ import easyReturn from '../../../../assets/chooseUs/return.svg';
 import support from '../../../../assets/chooseUs/support.svg';
 import truck from '../../../../assets/chooseUs/truck.svg';
 import bags from '../../../../assets/chooseUs/bags.svg';
-import RecentBlogs from '../../../RecentBlogs/RecentBlogs';
 
 const ProductsDetails = () => {
     const detail = useLoaderData();
     const [count, setCount] = useState(1);
     const [toggle, setToggle] = useState(false);
 
-    const { name, price, description, img, how_it_fits, ratings, product_details, quality_care, _id } = detail;
+    const { name, price, description, img, how_it_fits, ratings, product_details } = detail;
 
     const { data: limitedData = [], isLoading } = useQuery({
         queryKey: ['limitedData'],
@@ -30,6 +29,21 @@ const ProductsDetails = () => {
 
     if (isLoading) {
         return <Loading />
+    }
+
+    const handleIncrease = () => {
+        const increase = count + 1;
+        console.log(increase, count, 'clicked');
+        setCount(increase);
+    };
+
+    const handleDecrease = () => {
+        const decrease = count - 1;
+        setCount(decrease);
+        if (count === 1) {
+            const notDecreasing = 1;
+            setCount(notDecreasing);
+        }
     }
 
 
@@ -61,9 +75,9 @@ const ProductsDetails = () => {
                         <div className='my-7'>
                             <div className='flex'>
                                 <div className='bg-[#fafafa] rounded-full p-3 flex justify-between w-40 mr-5'>
-                                    <img src={minus} alt="" className=' w-6 h-6 border-[2px] border-primary rounded-full opacity-70 hover:opacity-100 cursor-pointer' />
+                                    <img src={minus} alt="" className=' w-6 h-6 border-[2px] border-primary rounded-full opacity-70 hover:opacity-100 cursor-pointer' onClick={handleDecrease} />
                                     {count}
-                                    <img src={plus} alt="" className=' w-6 h-6 border-[2px] border-primary rounded-full opacity-70 hover:opacity-100 cursor-pointer' />
+                                    <img src={plus} alt="" className=' w-6 h-6 border-[2px] border-primary rounded-full opacity-70 hover:opacity-100 cursor-pointer' onClick={handleIncrease} />
                                 </div>
                                 <button className='btn btn-dark rounded-full md:w-60 w-30 shadow-xl text-white normal-case'><img src={bag} alt="" className='w-6 mr-2' /> Add to cart</button>
                             </div>
