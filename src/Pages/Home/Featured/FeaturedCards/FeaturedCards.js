@@ -13,7 +13,7 @@ const FeaturedCards = ({ item }) => {
                 <p className=' mb-3 text-sm text-dark opacity-90'>{product_details.slice(0, 50)}..</p>
                 <div className=' flex items-center justify-between'>
                     <p className=''>Price: {price}</p>
-                    <button className=' btn btn-dark text-white rounded-full'>See Details</button>
+                    <button className=' btn btn-dark text-white rounded-full normal-case'>See details</button>
                 </div>
             </div>
         </div>
