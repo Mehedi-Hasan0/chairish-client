@@ -1,5 +1,4 @@
 import React from 'react';
-import arrow from '../../../../assets/icon/iconmonstr-arrow-right-thin.svg'
 
 const FeaturedCards = ({ item }) => {
     const { name, price, description, img, how_it_fits, ratings, product_details, quality_care, _id } = item;
