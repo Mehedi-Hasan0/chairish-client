@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import bg from '../../../assets/dots/dots-light.svg';
 import sofa from '../../../assets/images/couch.png';
 
@@ -11,8 +12,8 @@ const Hero = () => {
                         <h1 className=' text-3xl md:text-[40px] text-white font-semibold leading-tight my-6'>Modern Interior Design Shop</h1>
                         <p className=' text-sm text-[#bdbdbd] leading-7 my-6'>The weather may be cool but the shopping is hot. See an edit of the pieces our curators are loving right this minute.</p>
                         <div>
-                            <button className='btn btn-secondary normal-case rounded-full'>Shop Now</button>
-                            <p className='py-3 px-5 border-opacity-60 hover:border-opacity-100 rounded-full border-[2px] border-white inline-block text-white font-semibold text-[15px] text-opacity-80 hover:text-opacity-100 ml-4 cursor-pointer'>Explore</p>
+                            <Link to='/shop'><button className='btn btn-secondary normal-case rounded-full'>Shop Now</button></Link>
+                            <Link to='/shop'><p className='py-3 px-5 border-opacity-60 hover:border-opacity-100 rounded-full border-[2px] border-white inline-block text-white font-semibold text-[15px] text-opacity-80 hover:text-opacity-100 ml-4 cursor-pointer'>Explore</p></Link>
                         </div>
                     </div>
                     <div className=' lg:z-20 md:-mt-10 md:w-[80%] w-full sm:w-[90%] lg:w-[95%] mx-auto'>
