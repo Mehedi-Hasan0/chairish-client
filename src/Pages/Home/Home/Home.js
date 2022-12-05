@@ -1,4 +1,5 @@
 import React from 'react';
+import RecentBlogs from '../../RecentBlogs/RecentBlogs';
 import ChooseUs from '../ChooseUs/ChooseUs';
 import Featured from '../Featured/Featured';
 import Hero from '../Hero/Hero';
@@ -9,6 +10,7 @@ const Home = () => {
             <Hero />
             <Featured />
             <ChooseUs />
+            <RecentBlogs />
         </div>
     );
 };
