@@ -113,9 +113,9 @@ const SignUp = () => {
                         </select>
                         {errors.role && <p className=' text-red-400 text-xs'>{errors.role?.message}</p>}
                     </div>
-                    <input type='submit' className='btn btn-neutral w-full mt-4' value='sign up' />
+                    <input type='submit' className='btn btn-primary text-white w-full mt-4' value='sign up' />
                 </form>
-                <p className=' text-xs text-center mt-3 text-neutral'>Already have an account? <Link className=' text-primary text-sm hover:text-secondary hover:font-medium' to='/login'>Please Login</Link></p>
+                <p className=' text-xs text-center mt-3 text-neutral'>Already have an account? <Link className=' text-dark text-sm hover:text-primary hover:font-medium' to='/login'>Please Login</Link></p>
                 <div className=' divider'>OR</div>
                 <button onClick={handleGoogleSignIn} className=' btn btn-neutral btn-outline text-neutral w-full'>CONTINUE WITH GOOGLE</button>
             </div>

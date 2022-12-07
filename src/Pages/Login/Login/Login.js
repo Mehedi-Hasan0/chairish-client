@@ -73,11 +73,11 @@ const Login = () => {
                     <div>
                         {loginError && <p className='text-red-400 text-xs mb-3'>{loginError.slice(22, -2)}</p>}
                     </div>
-                    <input type='submit' className='btn btn-neutral w-full' value='login' />
+                    <input type='submit' className='btn btn-primary text-white w-full' value='login' />
                 </form>
-                <p className=' text-xs text-center mt-3 text-neutral'>New to Doctors Portal? <Link className=' text-primary text-sm hover:text-secondary hover:font-medium' to='/signup'>Create new account</Link></p>
+                <p className=' text-xs text-center mt-3 text-neutral'>New to Chairish? <Link className=' text-dark text-sm hover:text-primary hover:font-medium' to='/signup'>Create new account</Link></p>
                 <div className=' divider'>OR</div>
-                <button onClick={handleGoogleSignIn} className=' btn btn-neutral btn-outline text-neutral w-full'>CONTINUE WITH GOOGLE</button>
+                <button onClick={handleGoogleSignIn} className=' btn btn-dark btn-outline text-neutral w-full'>CONTINUE WITH GOOGLE</button>
             </div>
         </div>
     );
