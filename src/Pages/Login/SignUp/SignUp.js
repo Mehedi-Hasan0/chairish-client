@@ -67,7 +67,7 @@ const SignUp = () => {
             .catch(err => console.log(err))
     }
     return (
-        <div className=' flex md:flex-row flex-col justify-center items-center font-[poppins] my-9 mx-3'>
+        <div className=' flex md:flex-row flex-col justify-center items-center font-[poppins] max-w-6xl mx-auto lg:mb-40  my-20 py-10 px-5 sm:px-9 md:px-12 lg:px-16 xl:px-0 bg-white md:rounded-3xl'>
             <div className='w-96 md:mr-14'>
                 <img className='inline' src={img} alt="" />
             </div>
