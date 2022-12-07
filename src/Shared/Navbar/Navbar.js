@@ -1,13 +1,21 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
-import user from '../../assets/user.svg';
+import users from '../../assets/user.svg';
 import cart from '../../assets/cart.svg';
 import menu from '../../assets/icon/menu.svg';
 import close from '../../assets/icon/close.svg';
+import { AuthContext } from '../../context/AuthProvider';
 
 const Navbar = () => {
+    const { user, logOut } = useContext(AuthContext);
     const [toggle, setToggle] = useState(false);
+
+    const handleLogout = () => {
+        logOut()
+            .then(() => { })
+            .catch(err => console.log(err))
+    }
 
     return (
         <nav className=' bg-primary py-2 '>
@@ -23,13 +31,20 @@ const Navbar = () => {
                 </div>
                 <div className='flex w-16 justify-between'>
                     <div className="dropdown dropdown-left dropdown-hover">
-                        <label tabIndex={0}><Link><img className=' cursor-pointer' src={user} alt="user" /></Link></label>
+                        <label tabIndex={0}><Link><img className=' cursor-pointer' src={users} alt="user" /></Link></label>
                         <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 text-dark">
-                            <li><Link to='/login' className=' text-dark'>Login</Link></li>
-                            <li><Link to='/signup' className=' text-dark'>Sign Up</Link></li>
+                            {
+                                user?.email ?
+                                    <li><Link to='/login' className=' text-dark' onClick={handleLogout}>Log out</Link></li>
+                                    :
+                                    <>
+                                        <li><Link to='/login' className=' text-dark'>Login</Link></li>
+                                        <li><Link to='/signup' className=' text-dark'>Sign Up</Link></li>
+                                    </>
+                            }
+
                         </ul>
                     </div>
-
                     <img className=' cursor-pointer' src={cart} alt="cart" />
                 </div>
             </div>
@@ -40,7 +55,7 @@ const Navbar = () => {
 
                 <div className={`${toggle ? 'flex' : 'hidden'} p-6 bg-primary absolute top-14 right-0 w-full h-full flex-col opacity-100`}>
                     {/* <img src={toggle ? close : menu} alt='menu' className='w-6 object-contain mb-7 cursor-pointer' onClick={() => setToggle((previous) => !previous)} /> */}
-                    <div className='flex flex-col md:text-lg text-base text-white z-50 bg-primary w-full relative text-center justify-between h-36'>
+                    <div className='flex flex-col md:text-lg text-base z-50 bg-primary w-full relative text-center justify-between h-36'>
 
                         <Link className='text-base nav-link-mobile text-white' to='/'>Home</Link>
                         <Link className='text-base nav-link-mobile text-white' to='/shop'>Shop</Link>
@@ -49,7 +64,21 @@ const Navbar = () => {
                         <Link className='text-base nav-link-mobile text-white' to='/blog'>Blog</Link>
                         <Link className='text-base nav-link-mobile text-white' to='/contactus'>Contact Us</Link>
                         <div className='flex w-16 justify-between mx-auto mt-3'>
-                            <img className=' cursor-pointer' src={user} alt="user" />
+                            <div className="dropdown dropdown-bottom dropdown-hover">
+                                <label tabIndex={0}><Link><img className=' cursor-pointer' src={users} alt="user" /></Link></label>
+                                <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 text-dark">
+                                    {
+                                        user?.email ?
+                                            <li><Link to='/login' className=' text-dark'>Sign out</Link></li>
+                                            :
+                                            <>
+                                                <li><Link to='/login' className=' text-dark'>Login</Link></li>
+                                                <li><Link to='/signup' className=' text-dark'>Sign Up</Link></li>
+                                            </>
+                                    }
+                                </ul>
+                            </div>
+
                             <img className=' cursor-pointer' src={cart} alt="cart" />
                         </div>
                     </div>
