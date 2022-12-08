@@ -75,7 +75,7 @@ const Login = () => {
                     </div>
                     <input type='submit' className='btn btn-primary text-white w-full' value='login' />
                 </form>
-                <p className=' text-xs text-center mt-3 text-neutral'>New to Chairish? <Link className=' text-dark text-sm hover:text-primary hover:font-medium' to='/signup'>Create new account</Link></p>
+                <p className=' text-xs text-center mt-3 text-neutral'>New to Chairish? <Link className=' text-dark text-sm hover:text-primary hover:font-medium underline' to='/signup'>Create new account</Link></p>
                 <div className=' divider'>OR</div>
                 <button onClick={handleGoogleSignIn} className=' btn btn-dark btn-outline text-neutral w-full'>CONTINUE WITH GOOGLE</button>
             </div>

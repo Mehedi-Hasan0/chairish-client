@@ -8,11 +8,11 @@ import close from '../../assets/icon/close.svg';
 import { AuthContext } from '../../context/AuthProvider';
 
 const Navbar = () => {
-    const { user, logOut } = useContext(AuthContext);
+    const { user, logout } = useContext(AuthContext);
     const [toggle, setToggle] = useState(false);
 
     const handleLogout = () => {
-        logOut()
+        logout()
             .then(() => { })
             .catch(err => console.log(err))
     }
@@ -31,16 +31,17 @@ const Navbar = () => {
                 </div>
                 <div className='flex w-16 justify-between'>
                     <div className="dropdown dropdown-left dropdown-hover">
-                        <label tabIndex={0}><Link><img className=' cursor-pointer' src={users} alt="user" /></Link></label>
-                        <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 text-dark">
+                        <label tabIndex={0} className=""><Link><img src={users} alt="" /></Link></label>
+                        <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
                             {
                                 user?.email ?
-                                    <li><Link to='/login' className=' text-dark' onClick={handleLogout}>Log out</Link></li>
+                                    <li><Link to='/login'>Sign out</Link></li>
                                     :
                                     <>
-                                        <li><Link to='/login' className=' text-dark'>Login</Link></li>
-                                        <li><Link to='/signup' className=' text-dark'>Sign Up</Link></li>
+                                        <li><Link to='/login'>Login</Link></li>
+                                        <li><Link to='/signup'>Sign Up</Link></li>
                                     </>
+
                             }
 
                         </ul>
@@ -69,7 +70,7 @@ const Navbar = () => {
                                 <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 text-dark">
                                     {
                                         user?.email ?
-                                            <li><Link to='/login' className=' text-dark'>Sign out</Link></li>
+                                            <li><Link to='/login' className=' text-dark' onClick={handleLogout}>Sign out</Link></li>
                                             :
                                             <>
                                                 <li><Link to='/login' className=' text-dark'>Login</Link></li>
