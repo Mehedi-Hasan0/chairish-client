@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import Loading from '../../../Loading/Loading';
 import plus from '../../../../assets/icon/172525_plus_icon.svg';
@@ -14,9 +14,7 @@ import bags from '../../../../assets/chooseUs/bags.svg';
 
 const ProductsDetails = () => {
     const detail = useLoaderData();
-    const [count, setCount] = useState(1);
     const [toggle, setToggle] = useState(false);
-    const [disable, setDisable] = useState(0);
 
     const { name, price, description, img, how_it_fits, ratings, product_details } = detail;
 
@@ -33,21 +31,6 @@ const ProductsDetails = () => {
         return <Loading />
     }
 
-    const handleIncrease = () => {
-        const increase = count + 1;
-        console.log(increase, count, 'clicked');
-        setCount(increase);
-    };
-
-    const handleDecrease = () => {
-        const decrease = count - 1;
-        setCount(decrease);
-        if (count === 1) {
-            const notDecreasing = 1;
-            setCount(notDecreasing);
-        }
-    };
-
     const handleAddProduct = () => {
         const productDetail = { name, price, description, img, how_it_fits, ratings, product_details };
         fetch('http://localhost:5000/addProducts', {
@@ -61,9 +44,7 @@ const ProductsDetails = () => {
             .then(data => {
                 console.log(data);
                 if (data.acknowledged > 0) {
-                    const btn = 1;
-                    setDisable(btn);
-                    toast.success('Products added to carts')
+                    toast.success('Products added to carts');
                 }
             })
 
@@ -97,12 +78,7 @@ const ProductsDetails = () => {
                         </div>
                         <div className='my-7'>
                             <div className='flex'>
-                                <div className='bg-[#fafafa] rounded-full p-3 flex justify-between w-40 mr-5'>
-                                    <img src={minus} alt="" className=' w-6 h-6 border-[2px] border-primary rounded-full opacity-70 hover:opacity-100 cursor-pointer' onClick={handleDecrease} />
-                                    {count}
-                                    <img src={plus} alt="" className=' w-6 h-6 border-[2px] border-primary rounded-full opacity-70 hover:opacity-100 cursor-pointer' onClick={handleIncrease} />
-                                </div>
-                                <button className='btn btn-dark rounded-full md:w-60 w-30 shadow-xl text-white normal-case' onClick={handleAddProduct} disabled={disable === 1} ><img src={bag} alt="" className='w-6 mr-2' /> Add to cart</button>
+                                <Link to='/cart'><button className='btn btn-dark rounded-full md:w-60 w-30 shadow-xl text-white normal-case' onClick={handleAddProduct}><img src={bag} alt="" className='w-6 mr-2' /> Add to cart</button></Link>
                             </div>
                         </div>
                         <hr className=' border-1 border-[#adadad]' />

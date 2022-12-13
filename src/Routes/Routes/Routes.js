@@ -3,6 +3,7 @@ import Main from "../../layout/Main";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login/Login";
 import SignUp from "../../Pages/Login/SignUp/SignUp";
+import Cart from "../../Pages/Shop/Cart/Cart";
 import ProductsDetails from "../../Pages/Shop/Products/ProductsDetails/ProductsDetails";
 import Shop from "../../Pages/Shop/Shop";
 
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
             {
                 path: '/shop',
                 element: <Shop />,
+            },
+            {
+                path: '/cart',
+                element: <Cart />
             },
             {
                 path: '/shop/:id',
