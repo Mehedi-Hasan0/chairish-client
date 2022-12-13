@@ -11,6 +11,7 @@ import easyReturn from '../../../../assets/chooseUs/return.svg';
 import support from '../../../../assets/chooseUs/support.svg';
 import truck from '../../../../assets/chooseUs/truck.svg';
 import bags from '../../../../assets/chooseUs/bags.svg';
+import buyIcon from '../../../../assets/icon/icons8-buying-24.png';
 
 const ProductsDetails = () => {
     const detail = useLoaderData();
@@ -18,7 +19,7 @@ const ProductsDetails = () => {
 
     const { name, price, description, img, how_it_fits, ratings, product_details } = detail;
 
-    const { data: limitedData = [], isLoading } = useQuery({
+    const { data: limitedData = [], isLoading, refetch } = useQuery({
         queryKey: ['limitedData'],
         queryFn: async () => {
             const res = await fetch('http://localhost:5000/shop2');
@@ -78,7 +79,8 @@ const ProductsDetails = () => {
                         </div>
                         <div className='my-7'>
                             <div className='flex'>
-                                <Link to='/cart'><button className='btn btn-dark rounded-full md:w-60 w-30 shadow-xl text-white normal-case' onClick={handleAddProduct}><img src={bag} alt="" className='w-6 mr-2' /> Add to cart</button></Link>
+                                <button className='btn btn-secondary rounded-full md:w-40 w-30 shadow-xl text-black normal-case mr-5' onClick={handleAddProduct}><img src={bag} alt="" className='w-6 mr-2' /> Add to cart</button>
+                                <Link to='/cart'><button className='btn btn-dark rounded-full md:w-40 w-30 shadow-xl text-white normal-case' onClick={handleAddProduct}><img src={buyIcon} alt="" className='w-6 mr-2' /> Buy now</button></Link>
                             </div>
                         </div>
                         <hr className=' border-1 border-[#adadad]' />
