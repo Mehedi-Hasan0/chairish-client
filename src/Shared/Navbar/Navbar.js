@@ -6,34 +6,15 @@ import cart from '../../assets/cart.svg';
 import menu from '../../assets/icon/menu.svg';
 import close from '../../assets/icon/close.svg';
 import { AuthContext } from '../../context/AuthProvider';
-import { useQuery } from '@tanstack/react-query';
-import Loading from '../../Pages/Loading/Loading';
 
 const Navbar = () => {
     const { user, logout } = useContext(AuthContext);
     const [toggle, setToggle] = useState(false);
 
-    const { data: viewCart = [], isLoading, refetch } = useQuery({
-        queryKey: ['viewCart'],
-        queryFn: async () => {
-            const res = await fetch('http://localhost:5000/viewCart');
-            const data = await res.json();
-            return data;
-        }
-    })
-
-    const handleRefetch = () => {
-        refetch();
-    }
-
     const handleLogout = () => {
         logout()
             .then(() => { })
             .catch(err => console.log(err))
-    }
-
-    if (isLoading) {
-        return <Loading />
     }
 
     return (
@@ -55,35 +36,17 @@ const Navbar = () => {
                         <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
                             {
                                 user?.email ?
-                                    <li><Link to='/login'>Sign out</Link></li>
+                                    <li><Link to='/login' onClick={handleLogout}>Sign out</Link></li>
                                     :
                                     <>
                                         <li><Link to='/login'>Login</Link></li>
                                         <li><Link to='/signup'>Sign Up</Link></li>
                                     </>
-
                             }
 
                         </ul>
                     </div>
-                    {/* cart functionalities */}
-                    <div className="dropdown dropdown-left">
-                        <label tabIndex={0} className=""><Link><img src={cart} alt="cart" onClick={handleRefetch} /></Link></label>
-                        <div tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-                            {
-                                viewCart.map((products, i) => <p key={i}>products.length</p>)
-
-                            }
-                            {/* user?.email ?
-                                    <li><Link to='/login'>Sign out</Link></li>
-                                    :
-                                    <>
-                                        <li><Link to='/login'>Login</Link></li>
-                                        <li><Link to='/signup'>Sign Up</Link></li>
-                                    </> */}
-
-                        </div>
-                    </div>
+                    <Link to='/cart'><img src={cart} alt="cart" /></Link>
                 </div>
             </div>
 
@@ -116,7 +79,6 @@ const Navbar = () => {
                                     }
                                 </ul>
                             </div>
-
                             <img className=' cursor-pointer' src={cart} alt="cart" />
                         </div>
                     </div>
